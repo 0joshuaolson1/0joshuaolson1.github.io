@@ -8,3 +8,5 @@ Credits:
 - [JS Bin](https://jsbin.com/)
 - [https://developer.mozilla.org/en-US/](https://developer.mozilla.org/en-US/)
 - [https://github.com/0joshuaolson1/factoradic#ntop](https://github.com/0joshuaolson1/factoradic#ntop)
+
+...https://www.smbc-comics.com/comic/2014-08-04
