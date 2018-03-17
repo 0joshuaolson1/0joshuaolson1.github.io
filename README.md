@@ -1,6 +1,6 @@
 # Shuffy
 
-[https://0joshuaolson1.github.io/shuffy](https://0joshuaolson1.github.io/shuffy)
+Use the list shuffler: [https://0joshuaolson1.github.io/shuffy](https://0joshuaolson1.github.io/shuffy)
 
 Credits:
 - [https://qrng.anu.edu.au/](https://qrng.anu.edu.au/)
