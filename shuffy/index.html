@@ -986,7 +986,7 @@ const b=(()=>{
     BigInteger.prototype.square = bnSquare;
     BigInteger.prototype.Barrett = Barrett
     return BigInteger//new 0,new hex,new 256(and pow),fromInt or (new 2,add builtin 1),dMul,divRemTo,intV,-,mod,comp
-})(),f=new b(),m=new b(),B=new b('256'),openRNG=()=>{
+})(),f=new b(),d=new b(),m=new b(),B=new b('256'),openRNG=()=>{
 	a=document.getElementById('I').value.split('\n')
 	f.fromInt(2)
 	for(let n=2;n<a.length;)f.dMultiply(++n)
@@ -997,8 +997,8 @@ const b=(()=>{
 	const N=document.getElementById('N').value,r=B.pow(N.length/2),n=new b(N,16)
 	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with another hex value')
 	for(let i=0;++i<a.length;){
-		f.fromInt(i+1)
-		n.divRemTo(f,n,m)
+		d.fromInt(i+1)
+		n.divRemTo(d,n,m)
 		const j=i-m.intValue(),t=a[i]
 		a[i]=a[j]
 		a[j]=t
