@@ -22,7 +22,7 @@
 	<br>
 	2. <textarea id=N></textarea>
 	<br>
-	<button onclick=tryShuffle() onkeypress=tryShuffle()>try with this hexadecimal</button>
+	<button onclick=tryShuffle() onkeypress=tryShuffle()>try with this hexadecimal (skips other characters)</button>
 	<br>
 	<input id=A type=checkbox>
 	<label for=A>alert when done</label>
@@ -1005,7 +1005,7 @@ const b=(()=>{
 		:open('https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l))
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=B.pow(N.length),n=new b(N,16)
-	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with another hex value')
+	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with a smaller value or more hex digits')
 	for(let i=0;++i<a.length;){
 		d.fromInt(i+1)
 		n.divRemTo(d,n,m)
