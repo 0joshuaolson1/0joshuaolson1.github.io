@@ -24,6 +24,9 @@
 	<br>
 	<button onclick=tryShuffle() onkeypress=tryShuffle()>try with this hexadecimal</button>
 	<br>
+	<input id=A type=checkbox>
+	<label for=A>alert when done</label>
+	<br>
 	<br>
 	3! <textarea id=O></textarea>
 	<br>
@@ -1011,6 +1014,7 @@ const b=(()=>{
 		a[j]=t
 	}
 	$('O').value=a.join('\n')
+	if($('A').checked)alert('Done.')
 }
 	</script>
 </body>
