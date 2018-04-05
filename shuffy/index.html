@@ -16,6 +16,9 @@
 	<br>
 	<button onclick=openRNG() onkeypress=openRNG()>summon entropy to permute this list</button>
 	<br>
+	<button onclick=genRange() onkeypress=genRange()>fill with numbers 1 to</button>
+	<input id=R type=text>
+	<br>
 	<br>
 	2. <textarea id=N></textarea>
 	<br>
@@ -986,15 +989,19 @@ const b=(()=>{
     BigInteger.prototype.square = bnSquare;
     BigInteger.prototype.Barrett = Barrett
     return BigInteger//new 0,new hex,new 256(and pow),fromInt or (new 2,add builtin 1),dMul,divRemTo,intV,-,mod,comp
-})(),f=new b(),d=new b(),m=new b(),B=new b('256'),openRNG=()=>{
-	a=document.getElementById('I').value.split('\n')
+})(),f=new b(),d=new b(),m=new b(),B=new b('256'),$=i=>document.getElementById(i),genRange=()=>{
+	const l=parseInt($('R').value),a=Array(l)
+	for(let i=0;i<l;)a[i]=++i
+	$('I').value=a.join('\n')
+},openRNG=()=>{
+	a=$('I').value.split('\n')
 	f.fromInt(2)
 	for(let n=2;n<a.length;)f.dMultiply(++n)
 	const n=Math.ceil(f.bitLength()/8),l=Math.ceil(n/1024)
 	l>1024?alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the needed '+n)
 		:open('https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l))
 },tryShuffle=()=>{
-	const N=document.getElementById('N').value,r=B.pow(N.length/2),n=new b(N,16)
+	const N=$('N').value,r=B.pow(N.length/2),n=new b(N,16)
 	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with another hex value')
 	for(let i=0;++i<a.length;){
 		d.fromInt(i+1)
@@ -1003,7 +1010,7 @@ const b=(()=>{
 		a[i]=a[j]
 		a[j]=t
 	}
-	document.getElementById('O').value=a.join('\n')
+	$('O').value=a.join('\n')
 }
 	</script>
 </body>
