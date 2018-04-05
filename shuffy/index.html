@@ -1001,7 +1001,7 @@ const b=(()=>{
 	l>1024?alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the needed '+n)
 		:open('https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l))
 },tryShuffle=()=>{
-	const N=$('N').value,r=B.pow(N.length/2),n=new b(N,16)
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=B.pow(N.length/2),n=new b(N,16)
 	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with another hex value')
 	for(let i=0;++i<a.length;){
 		d.fromInt(i+1)
