@@ -12,7 +12,7 @@ Credits:
 
 ...[https://www.smbc-comics.com/comic/2014-08-04](https://www.smbc-comics.com/comic/2014-08-04)
 
-## Randint (WIP)
+## Randint
 
 Link: [https://0joshuaolson1.github.io/randint/](https://0joshuaolson1.github.io/randint/)
 
