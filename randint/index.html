@@ -1,61 +1,34 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-<meta charset=utf-8>
-<meta name=viewport content=width=device-width>
-<meta name=description content='a bring-your-own-randomness random number tool'>
-<meta name=author content=https://github.com/0joshuaolson1/randint>
-<title>Randint: a bring-your-own-randomness random number tool</title>
+	<meta charset=utf-8>
+	<meta name=viewport content='width=device-width'>
+	<meta name=description content='bring-your-own-randomness random number tool'>
+	<meta name=author content=https://github.com/0joshuaolson1/random-arXiv>
+	<title>Randint</title>
 </head>
-<!--TODO: labels, footer, a11y/semantics/validate, minify, offline-->
+<!--labels, footer, a11y/semantics/validate, minify/offline...-->
 <body>
-<noscript>
-<strong>Error: JavaScript is not available; this webpage cannot do its job with the current browser setup.</strong>
-<hr>
-</noscript>
-<h1>Randint: a bring-your-own-randomness random number tool</h1>
-Short url: <a href=https://u.nu/randint~>u.nu/randint</a>
-<br>
-<a href=https://www.alpertron.com.ar/ECM.HTM>This calculator may help.</a>
-<hr>
-1. Get a positive number between 1 and <input id=N type=text onchange=bigintIsReady=false>
-<br><br>
-2. <input id=A type=checkbox><label for=A>alert when done</label>
-<br>
-2a. <button onclick=prepareLink() onkeypress=prepareLink()>prepare entropy link</button>
-<br>
-2b. <button onclick=recommendSize() onkeypress=recommendSize()>recommend entropy size</button>
-<br><br>
-3a. Open this link in another tab/window: <a id=L href=https://qrng.anu.edu.au/API/api-demo.php>summon entropy</a>
-<br>
-3b. Recommended number of bytes: <span id=R></span>
-<br>
-3b. Minimum number of bits: <span id=M></span>
-<br><br>
-4. <button onclick=tryRandint() onkeypress=tryRandint()>try with hexadecimal (skips other characters):</button> <input id=E type=text>
-<br><br>
-Result: <span id=O></span>
-<script>
-let bigintIsReady=false//CHANGE NAME?
-const prepareLink=()=>{
-
-},recommendSize=()=>{
-
-},tryRandint=()=>{
-
-}
-
+	<noscript>
+		<strong>Error: JavaScript is not available; this webpage cannot do its job with the current browser setup.</strong>
+		<hr>
+	</noscript>
+	Short url: <a href=https://u.nu/randint~>u.nu/randint</a>
+	<br>
+	<a href=https://www.alpertron.com.ar/ECM.HTM>this calculator may help</a>
+	<hr>
+	1. <button onclick=openRNG() onkeypress=openRNG()>prepare to get an integer between 1 and</button>
+	<input id=I type=text>
+	<br><br>
+	2. <a id=L href=https://qrng.anu.edu.au/>open link in another tab</a>
+	<br><br>
+	3. <button onclick=tryRandint() onkeypress=tryRandint()>try with hex (skips other chars):</button>
+	<input id=N type=text>
+	<br><br>
+	4! <input id=O type=text>
+	<script>
 let n
-const ,$=i=>document.getElementById(i),openRNG=()=>{
-	n=new b($('I').value)
-	const d=Math.ceil(n.bitLength()/8)+1,l=Math.ceil(d/1024)
-	l>1024?alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
-		:$('L').href='https://qrng.anu.edu.au/API/jsonI.php?z='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
-},tryRandint=()=>{
-	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=new b(N,16),B=new b('16').pow(N.length),M=B.subtract(B.mod(n))
-	if(M.compareTo(m)<1)return alert('retry')
-	$('O').value=m.mod(n).add(b.ONE).toString()
-},b=(()=>{
+const b=(()=>{
     var dbits;
     var canary = 0xdeadbeefcafe;
     var j_lm = ((canary&0xffffff)==0xefcafe);
@@ -1012,8 +985,17 @@ const ,$=i=>document.getElementById(i),openRNG=()=>{
     BigInteger.prototype.isProbablePrime = bnIsProbablePrime;
     BigInteger.prototype.square = bnSquare;
     BigInteger.prototype.Barrett = Barrett
-    return BigInteger
-})()
-</script>
+    return BigInteger//minify with dead code elimination
+})(),$=i=>document.getElementById(i),openRNG=()=>{
+	n=new b($('I').value)
+	const d=Math.ceil(n.bitLength()/8)+1,l=Math.ceil(d/1024)
+	l>1024?alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
+		:$('L').href='https://qrng.anu.edu.au/API/jsonI.php?z='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
+},tryRandint=()=>{
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=new b(N,16),B=new b('16').pow(N.length),M=B.subtract(B.mod(n))
+	if(M.compareTo(m)<1)return alert('retry')
+	$('O').value=m.mod(n).add(b.ONE).toString()
+}
+	</script>
 </body>
 </html>
