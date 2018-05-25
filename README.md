@@ -1,4 +1,4 @@
-# List shuffler and random integers: RANDOM.ORG-like utility webpages supporting 'better' randomness (http://qrng.anu.edu.au or bring-your-own entropy)
+# List shuffler and random integers: RANDOM.ORG-like utility webpages supporting 'better' randomness (http://qrng.anu.edu.au ~or bring-your-own entropy~) (the webpages lie - BYO is NYI)
 
 ## Shuffy
 
