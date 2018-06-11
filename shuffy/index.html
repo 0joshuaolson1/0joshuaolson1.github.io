@@ -1001,7 +1001,6 @@ const b=(()=>{
 })(),f=new b(),d=new b(),m=new b(),B=new b('16'),$=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
 	for(let i=0;i<l;)a[i]=++i
-	if($('A').checked)alert('Done.')
 	$('I').value=a.join('\n')
 },openRNG=()=>{
 	a=$('I').value.split('\n')
@@ -1010,6 +1009,7 @@ const b=(()=>{
 	const n=Math.ceil(f.bitLength()/8)+1,l=Math.ceil(n/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l)
+	if($('A').checked)alert('Done (go to step 1)')
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=B.pow(N.length),n=new b(N,16)
 	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with a smaller value or more hex digits')
@@ -1020,8 +1020,8 @@ const b=(()=>{
 		a[i]=a[j]
 		a[j]=t
 	}
-	if($('B').checked)alert('Done.')
 	$('O').value=a.join('\n')
+	if($('B').checked)alert('Done (go to step 4)')
 }
 	</script>
 </body>
