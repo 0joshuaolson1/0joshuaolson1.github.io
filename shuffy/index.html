@@ -1009,7 +1009,7 @@ const b=(()=>{
 	const n=Math.ceil(f.bitLength()/8)+1,l=Math.ceil(n/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l)
-	if($('A').checked)alert('Done (go to step 1)')
+	if($('A').checked)alert('Done (go to step 2)')
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=B.pow(N.length),n=new b(N,16)
 	if(r.subtract(r.mod(f)).compareTo(n)<1)return alert('sorry: retry with a smaller value or more hex digits')
