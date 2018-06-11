@@ -990,7 +990,7 @@ const b=(()=>{
 	n=new b($('I').value)
 	const d=Math.ceil(n.bitLength()/8)+1,l=Math.ceil(d/1024)
 	l>1024?alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
-		:$('L').href='https://qrng.anu.edu.au/API/jsonI.php?z='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
+		:$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
 },tryRandint=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=new b(N,16),B=new b('16').pow(N.length),M=B.subtract(B.mod(n))
 	if(M.compareTo(m)<1)return alert('retry')
