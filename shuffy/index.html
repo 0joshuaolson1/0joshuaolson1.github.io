@@ -56,7 +56,7 @@ const $=i=>document.getElementById(i),genRange=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=16n**BigInt(N.length),n=BigInt('0x'+N)
 	if(r-r%f<=n)return alert('sorry: retry with a smaller value or more hex digits')
 	for(let i=0;++i<a.length;){
-		const I=BigInt(i+1),j=Number(BigInt(i)-n%I),t=a[i]
+		const I=BigInt(i+1),j=i-Number(n%I),t=a[i]
 		a[i]=a[j]
 		a[j]=t
 		n/=I
