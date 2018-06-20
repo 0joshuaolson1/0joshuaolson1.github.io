@@ -35,7 +35,7 @@ const $=i=>document.getElementById(i),openRNG=()=>{
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
 },tryRandint=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=BigInt('0x'+N),B=16n**BigInt(N.length)
-	if(m>=B-B%n)return alert('sorry: retry with a '+m<B?'smaller value':'larger implied range (longer hex)')
+	if(m>=B-B%n)return alert('sorry: retry with a '+(m<B?'smaller value':'larger implied range (longer hex)'))
 	$('O').value=(m%n+1n).toString()
 }
 	</script>
