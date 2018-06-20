@@ -55,7 +55,7 @@ const $=i=>document.getElementById(i),genRange=()=>{
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),B=16n**BigInt(N.length)
 	n=BigInt('0x'+N)
-	if(n>=B-B%f)return alert('sorry: retry with a '+n<B?'smaller value':'larger implied range (longer hex)')
+	if(n>=B-B%f)return alert('sorry: retry with a '+(n<B?'smaller value':'larger implied range (longer hex)'))
 	for(let i=0;++i<a.length;){
 		const I=BigInt(i+1),j=i-Number(n%I),t=a[i]
 		a[i]=a[j]
