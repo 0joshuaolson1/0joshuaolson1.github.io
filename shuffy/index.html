@@ -94,7 +94,7 @@ const b=(()=>{
         else
           this[this.t-1] |= x<<sh;
         sh +=4;
-        if(sh >= 28) sh -= this.28;
+        if(sh >= 28) sh -=28;
       }
       this.clamp();
     }
