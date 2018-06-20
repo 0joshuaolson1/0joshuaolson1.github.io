@@ -39,7 +39,7 @@
 	<br>
 	4! <textarea id=O></textarea>
 	<script>
-let a,f
+let a,f,n
 const $=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
 	for(let i=l;i;)a[--i]=i
@@ -53,8 +53,9 @@ const $=i=>document.getElementById(i),genRange=()=>{
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l)
 	if($('A').checked)alert('Done (go to step 2)')
 },tryShuffle=()=>{
-	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),r=16n**BigInt(N.length),n=BigInt('0x'+N)
-	if(r-r%f<=n)return alert('sorry: retry with a smaller value or more hex digits')
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),B=16n**BigInt(N.length)
+	n=BigInt('0x'+N)
+	if(n>=B-B%f)return alert('sorry: retry with a '+n<B?'smaller value':'larger implied range (longer hex)')
 	for(let i=0;++i<a.length;){
 		const I=BigInt(i+1),j=i-Number(n%I),t=a[i]
 		a[i]=a[j]
