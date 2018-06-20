@@ -34,8 +34,8 @@ const $=i=>document.getElementById(i),openRNG=()=>{
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
 },tryRandint=()=>{
-	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=BigInt('0x'+N),B=16n**BigInt(N.length),M=B-B%n
-	if(M<=m)return alert('sorry: retry with a smaller value or a larger implied range (longer hex)')
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=BigInt('0x'+N),B=16n**BigInt(N.length)
+	if(m>=B-B%n)return alert('sorry: retry with a ' +  m<B ? 'smaller value' : 'larger implied range (longer hex)')
 	$('O').value=(m%n+1n).toString()
 }
 	</script>
