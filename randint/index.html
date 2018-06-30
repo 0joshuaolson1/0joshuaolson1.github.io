@@ -30,7 +30,7 @@
 let n
 const $=i=>document.getElementById(i),openRNG=()=>{
 	n=BigInt($('I').value)
-	const d=((f.toString(16).length+1)>>1)+1,l=Math.ceil(d/1024)
+	const d=((n.toString(16).length+1)>>1)+1,l=Math.ceil(d/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
 },tryRandint=()=>{
