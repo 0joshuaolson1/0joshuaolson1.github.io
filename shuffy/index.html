@@ -42,7 +42,7 @@
 let a,f,n
 const $=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
-	for(let i=l;i;)a[--i]=i
+	for(let i=l;i;)a[i]=i--
 	$('I').value=a.join('\n')
 },openRNG=()=>{
 	a=$('I').value.split('\n')
