@@ -1,0 +1,45 @@
+  <!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content='width=device-width'>
+	<meta name=description content='random websites, music, etc. in bad browsers'>
+	<meta name=author content=https://github.com/0joshuaolson1/media-multiverse>
+	<title>Media Multiverse (mobile)</title>
+</head>
+<!--labels, footer, a11y/semantics/validate, minify, offline...-->
+<body>
+	<noscript>
+		<strong>Error: JavaScript is not available; this webpage cannot do its job with the current browser setup.</strong>
+		<hr>
+	</noscript>
+  <select id=T oninput=alert(document.getElementById('T').value)>
+    <option>f</option>
+    <option selected>s</option>
+    <option>w</option>
+  </select>
+  <hr>
+	1. <button onclick=openRNG() onkeypress=openRNG()>prepare to get an integer between 1 and</button>
+	<input id=I type=text>
+	<br><br>
+	(2.) <a id=L href=https://qrng.anu.edu.au/>open link in another tab</a> to use https://qrng.anu.edu.au
+	<br><br>
+	3. <button onclick=tryRandint() onkeypress=tryRandint()>try with hex (skips other chars):</button>
+	<input id=N type=text>
+	<br><br>
+	4! <input id=O type=text>
+	<script>
+let n
+const $=i=>document.getElementById(i),openRNG=()=>{
+	n=BigInt($('I').value)
+	const d=((n.toString(16).length+1)>>1)+1,l=Math.ceil(d/1024)
+	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
+	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
+},tryRandint=()=>{
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=BigInt('0x'+N),B=16n**BigInt(N.length)
+	if(m>=B-B%n)return alert('sorry: retry with a '+(m<B?'smaller value':'larger implied range (longer hex)'))
+	$('O').value=(m%n+1n).toString()
+}
+	</script>
+</body>
+</html>
