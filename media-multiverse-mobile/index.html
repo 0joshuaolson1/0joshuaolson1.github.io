@@ -22,7 +22,7 @@
 	<br><br>
 	(2.) <a id=L href=https://qrng.anu.edu.au/>open link in another tab</a> to use https://qrng.anu.edu.au
 	<br><br>
-	3. <button onclick=show() onkeypress=show()>try with hex (skips other chars; longer=more results):</button>
+	3. <button onclick=show() onkeypress=show()>use hex (skips other chars; longer=more results):</button>
 	<input id=N type=text>
 	<script>
 let t,N,l,L,e=0,E=1
@@ -31,17 +31,17 @@ const $=i=>document.getElementById(i),prepType=()=>{
 	let n
 	if(t=='w'){
 		n=128n
-		N=6e8
+		N=600000000n
 		l='https://crt.sh/?q='
 		L=''
 	}else{
 		n=256n
 		if(t=='s'){
-			N=5e8
+			N=500000000n
 			l='https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/'
 			L=''
 		}else{
-			N=5e5
+			N=500000n
 			l='https://fimfiction.net/story/'
 			L='/1/'
 		}
