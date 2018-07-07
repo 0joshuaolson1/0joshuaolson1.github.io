@@ -17,7 +17,7 @@
 	<hr>
 	1. <textarea id=I></textarea>
 	<br>
-	<button onclick=openRNG() onkeypress=openRNG()>prepare to permute this list</button>
+	<button onclick=prepare() onkeypress=prepare()>prepare to permute this list</button>
 	<br>
 	<button onclick=genRange() onkeypress=genRange()>fill with numbers 1 to</button>
 	<input id=R type=text>
@@ -44,7 +44,7 @@ const $=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
 	for(let i=0;i<l;)a[i]=++i
 	$('I').value=a.join('\n')
-},openRNG=()=>{
+},prepare=()=>{
 	a=$('I').value.split('\n')
 	f=2n
 	for(let n=BigInt(a.length);n>2n;)f*=n--
