@@ -25,9 +25,9 @@
 	3. <button onclick=show() onkeypress=show()>use hex (skips other chars; longer=more results):</button>
 	<input id=N type=text>
 	<script>
-let t,N,l,L,e=0,E=1
+let N,l,L,e=0n,E=1n
 const $=i=>document.getElementById(i),prepType=()=>{
-	t=$('T').value
+	const t=$('T').value
 	let n
 	if(t=='w'){
 		n=128n
