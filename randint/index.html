@@ -17,7 +17,7 @@
 	<br>
 	<a href=https://www.alpertron.com.ar/ECM.HTM>this calculator may help</a>
 	<hr>
-	1. <button onclick=openRNG() onkeypress=openRNG()>prepare to get an integer between 1 and</button>
+	1. <button onclick=prepare() onkeypress=prepare()>prepare to get an integer between 1 and</button>
 	<input id=I type=text>
 	<br><br>
 	(2.) <a id=L href=https://qrng.anu.edu.au/>open link in another tab</a> to use https://qrng.anu.edu.au
@@ -28,7 +28,7 @@
 	4! <input id=O type=text>
 	<script>
 let n
-const $=i=>document.getElementById(i),openRNG=()=>{
+const $=i=>document.getElementById(i),prepare=()=>{
 	n=BigInt($('I').value)
 	const d=((n.toString(16).length+1)>>1)+1,l=Math.ceil(d/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
