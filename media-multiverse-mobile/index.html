@@ -48,7 +48,7 @@ const $=i=>document.getElementById(i),prepType=()=>{
 			L='/1/'
 		}
 	}
-	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length=1&size='+n
+	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size='+n
 },show=()=>{
 	const n=$('N').value.replace(/[^0-9A-Fa-f]/g,'')
 	e+=E*BigInt('0x'+n)
