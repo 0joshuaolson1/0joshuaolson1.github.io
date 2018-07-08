@@ -24,19 +24,16 @@
 	<br>
 	<input id=A type=checkbox>
 	<label for=A>alert when done</label>
-	<br>
-	<br>
+	<br><br>
 	(2.) <a id=L href=https://qrng.anu.edu.au/>open this link in another tab</a> to use https://qrng.anu.edu.au
-	<br>
-	<br>
+	<br><br>
 	3. <textarea id=N></textarea>
 	<br>
 	<button onclick=tryShuffle() onkeypress=tryShuffle()>try with this hex (skips other chars)</button>
 	<br>
 	<input id=B type=checkbox>
 	<label for=B>alert when done</label>
-	<br>
-	<br>
+	<br><br>
 	4! <textarea id=O></textarea>
 	<script>
 let a,f,n
@@ -50,7 +47,7 @@ const $=i=>document.getElementById(i),genRange=()=>{
 	for(let n=BigInt(a.length);n>2n;)f*=n--
 	const n=((f.toString(16).length+1)>>1)+1,l=Math.ceil(n/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
-	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(n/l)
+	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length='+l+'&size='+Math.ceil(n/l)
 	if($('A').checked)alert('Done (go to step 2)')
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),B=16n**BigInt(N.length)
