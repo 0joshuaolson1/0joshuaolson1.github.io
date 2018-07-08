@@ -32,7 +32,7 @@ const $=i=>document.getElementById(i),prepare=()=>{
 	n=BigInt($('I').value)
 	const d=((n.toString(16).length+1)>>1)+1,l=Math.ceil(d/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+d)
-	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?nocache='+Date.now()+'&type=hex16&length='+l+'&size='+Math.ceil(d/l)
+	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length='+l+'&size='+Math.ceil(d/l)
 },tryRandint=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),m=BigInt('0x'+N),B=16n**BigInt(N.length)
 	if(m>=B-B%n)return alert('sorry: retry with a '+(m<B?'smaller value':'larger implied range (longer hex)'))
