@@ -22,45 +22,36 @@
 		<option>f</option>
 	</select>
 	<br><br>
-	(2.) <a id=L href=https://qrng.anu.edu.au/>open link in another tab</a> to use https://qrng.anu.edu.au
+	(2.) <a id=Q href=https://qrng.anu.edu.au/>open link in another tab</a> to use https://qrng.anu.edu.au
 	<br><br>
-	3. <button onclick=show() onkeypress=show()>use hex (skips other chars; longer=more results):</button>
+	3. <button onclick=main() onkeypress=main()>use hex (skips other chars; longer=more results):</button>
 	<input id=N type=text>
-	<br><br>
-	4! Explore any new tabs that loaded something...
-	<hr>
-	For <code>w</code>, enter '<code>j</code>' followed by this code into the address bar for each interesting <code>crt.sh</code> document:
-	<br>
-	<textarea readonly id=C></textarea>
+	<div id=D></div>
 	<script>
-let N,l,L,e=0n,E=1n
-const $=i=>document.getElementById(i),prepType=()=>{
-	const t=$('T').value
-	let n
-	if(t=='w'){
-		n=128n
-		N=600000000n
-		l='https://crt.sh/?opt=nometadata&q='
-		L=''
-	}else{
-		n=256n
-		if(t=='s'){
-			N=500000000n
-			l='https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/'
-			L=''
-		}else{
-			N=500000n
-			l='https://fimfiction.net/story/'
-			L='/1/'
-		}
+let w,W,N,l,L,e=0n,E=1n
+const $=i=>document.getElementById(i),d=$('D'),T=$('T'),q=$('Q'),Q='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size=',prepType=()=>{
+	const t=T.value
+	W=w
+	if(w=t=='w')return q.href=Q+64
+	if(W)for(d.innerHTML='',q.href=Q+256,N=600000000n;E>=N;E/=N)e/=N
+	if(t=='s'){
+		N=500000000n
+		l='https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/'
+		return L=''
 	}
-	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size='+n
-},show=()=>{
-	const n=$('N').value.replace(/[^0-9A-Fa-f]/g,'')
+	N=500000n
+	l='https://www.fimfiction.net/story/'
+	L='/1/'
+},m=$('N'),main=()=>{
+	const n=m.value.replace(/[^0-9A-Fa-f]/g,'')
 	e+=E*BigInt('0x'+n)
-	for(E*=16n**BigInt(n.length);E>=N;e/=N,E/=N)
-		open(l+e%N+L)
+	E*=16n**BigInt(n.length)
+	if(w)d.innerHTML=`<br><br>
+	4. copy the following code, go <a href=https://crt.sh/robots.txt>here</a>, and evaluate '<code>j</code>' followed by the copied code in the address bar
+	<br>
+	<textarea readonly>avascript:for(N=600000000n,e=${e}n,E=${E}n,$='&nbsp;',_=$+$+$+$,b='<BR>'+_,p=b+_+_+_+'DNS:',B='<br>',I=b+_+_+'X509v3'+$+'Subject'+$+'Alternative'+$+'Name:'+$+p,f=async(s,u,i,j,S=new Set)=>{s=await(await fetch(u='https://crt.sh/?opt=nometadata&q='+s).text();i=s.search(I);for(j=i+=~i?129:open(s.slice(-1)!='\n'?u:J)();i==j;j=s.indexOf(p,i))S.add('https://'+s.slice(2*(s[i=j+104]=='*')+i,i=s.indexOf(b,i)));d.innerHTML+=Array.from(S).join(B)+B};E>=N;E/=N,e/=N)f(e%N)</textarea>`
+	else for(;E>=N;E/=N,e/=N)open(l+e%N+L)
 }
-$('C').value="avascript:d=document.body;s=d.innerHTML.toLowerCase();$='&nbsp;';_=$+$+$+$;b='<br>'+_;e=b+_+_+_+'dns:';i=s.search(b+_+_+'x509v3'+$+'subject'+$+'alternative'+$+'name:'+$+e);S=new Set;for(j=i+=~i?129:alert('domain list not found')();i==j;j=s.indexOf(e,i),S.add('<a href='+u+'>'+u+'</a>'))u='https://'+s.slice(2*(s[i=j+104]=='*')+i,i=s.indexOf(b,i));d.innerHTML=Array.from(S).join('<br>')"
 	</script>
 </body>
+</html>
