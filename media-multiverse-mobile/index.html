@@ -28,12 +28,13 @@
 	<input id=N type=text>
 	<div id=D></div>
 	<script>
-let w,W,N,l,L,e=0n,E=1n
+let w=NaN,W,N,l,L,e=0n,E=1n
 const $=i=>document.getElementById(i),d=$('D'),T=$('T'),q=$('Q'),Q='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size=',prepType=()=>{
 	const t=T.value
 	W=w
 	if(w=t=='w')return q.href=Q+64
 	if(W)for(d.innerHTML='',q.href=Q+256,N=600000000n;E>=N;E/=N)e/=N
+	else if(!w&&W!=W)q.href=Q+256
 	if(t=='s'){
 		N=500000000n
 		l='https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/'
