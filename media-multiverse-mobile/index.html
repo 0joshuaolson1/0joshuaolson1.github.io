@@ -32,12 +32,11 @@
 	<textarea id=C readonly></textarea>
 	<script>
 let e=0n,E=1n,N
-const $=i=>document.getElementById(i),h=$('H'),c=$('C'),T =$('T'), q =$('Q'),prepLink=()=>q.href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size='+(T.value=='w'?128:256),m=$('N'),main=()=>{
+const $=i=>document.getElementById(i),h=$('H'),c=$('C'),T=$('T'),q=$('Q'),prepLink=()=>q.href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length=1&size='+(T.value=='w'?128:256),m=$('N'),main=()=>{
 	for(;E>=N;E/=N)e/=N
-	const n=m.value.replace(/[^0-9A-Fa-f]/g,'')
+	const t=T.value,n=m.value.replace(/[^0-9A-Fa-f]/g,'')
 	e+=E*BigInt('0x'+n)
 	E*=16n**BigInt(n.length)
-	const t=T.value
 	if(t=='s'){
 		N=500000000n
 		h.href='https://w.soundcloud.com'
@@ -50,7 +49,7 @@ const $=i=>document.getElementById(i),h=$('H'),c=$('C'),T =$('T'), q =$('Q'),pre
 	}
 	N=500000n
 	h.href='https://www.fimfiction.net/_'
-	c.value=`avasc.value=`avascript:N=${N}n;E=${E}n;e=${e}n;for(f=asynccript:N=${N}n;E=${E}n;e=${e}n;for(f=async u=>(await fetch(u,{method:'HEAD'})).ok&&open(u);E>=N;E/=N,e/=N)f('https://www.fimfiction.net/story/'+e%N+'/1')`
+	c.value=`avascript:N=${N}n;E=${E}n;e=${e}n;for(f=asynccript:N=${N}n;E=${E}n;e=${e}n;for(f=async u=>(await fetch(u,{method:'HEAD'})).ok&&open(u);E>=N;E/=N,e/=N)f('https://www.fimfiction.net/story/'+e%N+'/1')`
 }
 	</script>
 </body>
