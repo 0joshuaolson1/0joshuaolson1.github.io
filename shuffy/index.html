@@ -20,8 +20,8 @@
 	<button onclick=genRange() onkeypress=genRange()>fill with numbers 1 to</button>
 	<input id=R type=text>
 	<br>
+	<label for=P>only pick this many:</label>
 	<input id=P type=text>
-	<label for=P>only pick this many</label>
 	<br>
 	<button onclick=prepare() onkeypress=prepare()>prepare to permute this list</button>
 	<br><br>
@@ -44,10 +44,9 @@ const $=i=>document.getElementById(i),genRange=()=>{
 },prepare=()=>{
 	a=$('I').value.split('\n')
 	f=1n
-	let n=BigInt(a.length)
-	const L=n-BigInt($('P').value||2)
-	for(let n=BigInt(a.length);n>=L;)f*=n--
-	const n=((f.toString(16).length+1)>>1)+1,l=Math.ceil(n/1024)
+	n=BigInt(a.length)
+	for(const L=n-BigInt($('P').value||2),M=L<1n?2n:L;n>=M;)f*=n--
+	const n =((f.toString(16).length+1)>>1)+1,l=Math.ceil(n/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length='+l+'&size='+Math.ceil(n/l)
 	if($('A').checked)alert('Done (go to step 2)')
