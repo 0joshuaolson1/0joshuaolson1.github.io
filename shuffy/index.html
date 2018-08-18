@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content='width=device-width'>
+	<meta name=description content='bring-your-own-randomness list scramber'>
+	<meta name=author content=https://github.com/0joshuaolson1/factoradic/issues/25>
+	<title>Shuffy</title>
+</head>
+<!--labels, footer, a11y/semantics/validate, minify, offline...-->
+<body>
+	<noscript>
+		<strong>Error: JavaScript is not available; this webpage cannot do its job with the current browser setup.</strong>
+		<hr>
+	</noscript>
+	Short url: <a href=https://u.nu/shuffy~>u.nu/shuffy</a>
+	<hr>
+	1. <textarea id=I></textarea>
+	<br>
+	<button onclick=genRange() onkeypress=genRange()>fill with numbers 1 to</button>
+	<input id=R type=text>
+	<br>
+	<input id=P type=text>
+	<label for=P>only pick this many</label>
+	<br>
+	<button onclick=prepare() onkeypress=prepare()>prepare to permute this list</button>
+	<br><br>
+	(2.) <a id=L href=https://qrng.anu.edu.au/>open this link in another tab</a> to use https://qrng.anu.edu.au
+	<br><br>
+	3. <textarea id=N></textarea>
+	<br>
+	<button onclick=tryShuffle() onkeypress=tryShuffle()>try with this hex (skips other chars)</button>
+	<br>
+	<input id=B type=checkbox>
+	<label for=B>alert when done</label>
+	<br><br>
+	4! <textarea id=O></textarea>
+	<script>
+let a,f,n
+const $=i=>document.getElementById(i),genRange=()=>{
+	const l=parseInt($('R').value),a=Array(l)
+	for(let i=0;i<l;)a[i]=++i
+	$('I').value=a.join('\n')
+},prepare=()=>{
+	a=$('I').value.split('\n')
+	f=1n
+	let n=BigInt(a.length)
+	const L=n-BigInt($('P').value||2)
+	for(let n=BigInt(a.length);n>=L;)f*=n--
+	const n=((f.toString(16).length+1)>>1)+1,l=Math.ceil(n/1024)
+	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
+	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length='+l+'&size='+Math.ceil(n/l)
+	if($('A').checked)alert('Done (go to step 2)')
+},tryShuffle=()=>{
+	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),B=16n**BigInt(N.length)
+	n=BigInt('0x'+N)
+	if(n>=B-B%f)return alert('sorry: retry with a '+(n<B?'smaller value':'larger implied range (longer hex)'))
+	for(let i=0;++i<a.length;){
+		const I=BigInt(i+1),j=i-Number(n%I),t=a[i]
+		a[i]=a[j]
+		a[j]=t
+		n/=I
+	}
+	$('O').value=a.join('\n')
+	if($('B').checked)alert('Done (go to step 4)')
+}
+	</script>
+</body>
+</html>
