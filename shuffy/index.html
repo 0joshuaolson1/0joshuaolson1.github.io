@@ -18,7 +18,7 @@
 	1. <textarea id=I></textarea>
 	<br>
 	<button onclick=genRange() onkeypress=genRange()>fill with numbers 1 to</button>
-	<input id=R type=text>
+	<input id=R type=text> times <input id=C type=text value=1>
 	<br>
 	<button onclick=prepare() onkeypress=prepare()>prepare to permute this list</button>
 	<br><br>
@@ -37,7 +37,7 @@ let a,f,n
 const $=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
 	for(let i=0;i<l;)a[i]=++i
-	$('I').value=a.join('\n')
+    $('I').value=a.join('\n').repeat(parseInt($('C').value))
 },prepare=()=>{
 	a=$('I').value.split('\n')
 	f=1n
@@ -45,7 +45,7 @@ const $=i=>document.getElementById(i),genRange=()=>{
 	const n=((f.toString(16).length+1)>>1)+1,l=Math.ceil(n/1024)
 	if(l>1024)return alert('sorry: one qrng.anu.edu.au request only summons 1048576 bytes of the desired '+n)
 	$('L').href='https://qrng.anu.edu.au/API/jsonI.php?type=hex16&length='+l+'&size='+Math.ceil(n/l)
-	if($('A').checked)alert('Done (go to step 2)')
+	if($('B').checked)alert('Done (go to step 2)')
 },tryShuffle=()=>{
 	const N=$('N').value.replace(/[^0-9A-Fa-f]/g,''),B=16n**BigInt(N.length)
 	n=BigInt('0x'+N)
