@@ -35,9 +35,9 @@
 	<script>
 let a,f,n
 const $=i=>document.getElementById(i),genRange=()=>{
-	const l=parseInt($('R').value),a=Array(l)
-	for(let i=0;i<l;)a[i]=++i
-	a=[].concat(...Array(parseInt($('C').value)).fill(a))
+	const l=parseInt($('R').value),A=Array(l)
+	for(let i=0;i<l;)A[i]=++i
+	a=[].concat(...Array(parseInt($('C').value)).fill(A))
 	$('I').value=a.join('\n')
 },prepare=()=>{
 	a=$('I').value.split('\n')
