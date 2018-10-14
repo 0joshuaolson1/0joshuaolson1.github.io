@@ -37,7 +37,8 @@ let a,f,n
 const $=i=>document.getElementById(i),genRange=()=>{
 	const l=parseInt($('R').value),a=Array(l)
 	for(let i=0;i<l;)a[i]=++i
-    $('I').value=a.join('\n').repeat(parseInt($('C').value))
+	a=[].concat(...Array(parseInt($('C').value)).fill(a))
+	$('I').value=a.join('\n')
 },prepare=()=>{
 	a=$('I').value.split('\n')
 	f=1n
