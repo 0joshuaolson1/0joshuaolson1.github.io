@@ -1,14 +1,5 @@
 <html><body><input type=button value=play onclick=play()><script>const play=()=>{
-  new AudioContext().audioWorklet.addModule(URL.createObjectURL(new Blob([`
-    registerProcessor('w',class extends AudioWorkletProcessor{
-      constructor(_){
-        super(_)
-      }
-      process(){
-        return true
-      }
-    })
-  `],{type:'application/javascript'}))).then(()=>{
+  new AudioContext().audioWorklet.addModule('k.js').then(()=>{
     alert(new AudioWorkletNode(new AudioContext(),'w'))
   })
 }</script></body></html>
